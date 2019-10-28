@@ -1,0 +1,22 @@
+.cart-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-buttons__button {
+    height: 50px;
+    padding: 0 40px;
+    text-decoration: none;
+    color: #4a4a4a;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: 1px solid #eaeaea;
+    line-height: 50px;
+    margin-top: 44px;
+    transition: border-color 0.3s ease;
+}
+
+.cart-buttons__button:hover {
+    border: 1px solid #f16d7f;
+}

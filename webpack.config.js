@@ -17,6 +17,9 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: 'babel-loader',
+            },{
+                test: /\.(jpg|png|svg)$/,
+                loader: 'file-loader',
             },
             {
                 test: /\.sass$/,
@@ -27,7 +30,7 @@ module.exports = {
                         loader: 'sass-loader',
                         options: {
                             sassOptions: {
-                                indentedSyntax: true
+                                indentedSyntax: true,
                             }
                         }
                     }

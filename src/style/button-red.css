@@ -1,0 +1,12 @@
+.button {
+    height: 38px;
+    background-color: #f16d7f;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.38px;
+    color: #ffffff;
+    line-height: 38px;
+    padding-left: 15px;
+    padding-right: 15px; }
+.button i {
+    padding-left: 8px; }

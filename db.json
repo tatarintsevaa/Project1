@@ -1,0 +1,83 @@
+{
+  "goods": [
+    {
+      "id": 1,
+      "title": "Mango People T-Short N1",
+      "price": 52,
+      "quantity": 1,
+      "image": "src/img/product1.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Mango People T-Short N2",
+      "price": 52,
+      "quantity": 1,
+      "image": "src/img/product2.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Mango People T-Short N3",
+      "price": 52,
+      "quantity": 1,
+      "image": "src/img/product3.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Mango People T-Short N4",
+      "price": 52,
+      "quantity": 1,
+      "image": "src/img/product4.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Mango People T-Short N5",
+      "price": 52,
+      "quantity": 1,
+      "image": "src/img/product5.jpg"
+    },
+    {
+      "id": 6,
+      "title": "Mango People T-Short N6",
+      "price": 52,
+      "quantity": 1,
+      "image": "src/img/product6.jpg"
+    },
+    {
+      "id": 7,
+      "title": "Mango People T-Short N7",
+      "price": 52,
+      "quantity": 1,
+      "image": "src/img/product7.jpg"
+    },
+    {
+      "id": 8,
+      "title": "Mango People T-Short N8",
+      "price": 52,
+      "quantity": 1,
+      "image": "src/img/product8.jpg"
+    }
+  ],
+  "cart": [
+    {
+      "id": 2,
+      "title": "Mango People T-Short N2",
+      "price": 52,
+      "quantity": 1,
+      "image": "src/img/product2.jpg"
+    },
+    {
+      "id": 1,
+      "title": "Mango People T-Short N1",
+      "price": 52,
+      "quantity": 1,
+      "image": "src/img/product1.jpg"
+    },
+    {
+      "id": 8,
+      "title": "Mango People T-Short N8",
+      "price": 52,
+      "quantity": 1,
+      "image": "src/img/product8.jpg"
+    }
+  ]
+}
