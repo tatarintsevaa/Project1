@@ -18,3 +18,7 @@ body button:hover {
 .container {
     margin: 0 auto;
     width: 1140px; }
+
+input {
+    outline: none;
+}

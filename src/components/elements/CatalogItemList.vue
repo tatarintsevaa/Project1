@@ -20,34 +20,7 @@
         },
         methods: {
             handleAddClick(item) {
-                let find = this.cartItems.find(product => product.id === +item.id);
-                if (find) {
-                    fetch(`http://localhost:3000/cart/${find.id}`, {
-                        method: 'PATCH',
-                        body: JSON.stringify({quantity: ++find.quantity}),
-                        headers: {
-                            'Content-type': 'application/json',
-                        },
-                    })
-                        .catch((error) => console.log(error))
-                } else {
-                    fetch('http://localhost:3000/cart', {
-                        method: 'POST',
-                        body: JSON.stringify({
-                            id: +item.id,
-                            title: item.title,
-                            price: +item.price,
-                            quantity: 1,
-                            image: item.image}),
-                        headers: {
-                            'Content-type': 'application/json',
-                        },
-                    })
-                        .then(() => {
-                            this.cartItems.push({...item, quantity: 1});
-                        })
-                        .catch((error) => console.log(error))
-                }
+                this.$emit('add', item);
             }
         },
         data() {

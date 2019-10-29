@@ -57,27 +57,5 @@
       "image": "src/img/product8.jpg"
     }
   ],
-  "cart": [
-    {
-      "id": 2,
-      "title": "Mango People T-Short N2",
-      "price": 52,
-      "quantity": 1,
-      "image": "src/img/product2.jpg"
-    },
-    {
-      "id": 1,
-      "title": "Mango People T-Short N1",
-      "price": 52,
-      "quantity": 1,
-      "image": "src/img/product1.jpg"
-    },
-    {
-      "id": 8,
-      "title": "Mango People T-Short N8",
-      "price": 52,
-      "quantity": 1,
-      "image": "src/img/product8.jpg"
-    }
-  ]
+  "cart": []
 }

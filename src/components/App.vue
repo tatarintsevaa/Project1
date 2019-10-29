@@ -1,8 +1,8 @@
 <template>
     <div>
-        <Header />
+        <Header ref="header" />
         <Navigation />
-        <router-view  />
+        <router-view @add="handleAddClick" />
         <Subscribe />
         <div class="slr"></div>
         <Footer />
@@ -22,6 +22,11 @@
             Navigation,
             Subscribe,
             Footer
+        },
+        methods: {
+            handleAddClick(item) {
+                this.$refs.header.$refs.cart.handleAddClick(item);
+            }
         },
         mounted() {
             console.log(this);

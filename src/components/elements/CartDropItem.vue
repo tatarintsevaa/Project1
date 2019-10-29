@@ -16,14 +16,20 @@
                 {{ product.quantity }} x ${{ product.price }}
             </div>
         </div>
-        <a href="#" class="delete__button"><i class="fas fa-times-circle delete"></i></a>
+        <a href="#" class="delete__button" @click="handleRemoveClick"><i class="fas fa-times-circle delete"></i></a>
     </div>
 </template>
 
 <script>
     export default {
         name: "CartDropItem",
-        props: ['product']
+        props: ['product'],
+        methods:{
+            handleRemoveClick(event) {
+                event.preventDefault();
+                this.$emit('remove');
+            }
+        }
     }
 </script>
 

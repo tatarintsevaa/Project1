@@ -1,9 +1,9 @@
 <template>
     <div>
-        <Slider />
-        <Categories />
-        <Fetured />
-        <Offer />
+        <Slider/>
+        <Categories/>
+        <Fetured @add="handleAddClick"/>
+        <Offer/>
     </div>
 </template>
 
@@ -20,6 +20,11 @@
             Categories,
             Fetured,
             Offer
+        },
+        methods: {
+            handleAddClick(item) {
+                this.$emit('add', item);
+            }
         }
     }
 </script>

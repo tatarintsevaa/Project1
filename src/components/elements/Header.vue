@@ -12,8 +12,9 @@
             </div>
             <div class="header__block header__block_right">
                 <div class="header__cart">
-                    <a href="#" class="header__cart_link"><img src="../../img/cart.svg" alt="cart"></a>
-                    <CartDrop ref="cart"/>
+                    <a href="#" class="header__cart_link" @click="handleShowClick"><img src="../../img/cart.svg" alt="cart"></a>
+<!--                    <div class="count">{{ cartItemsCount }} </div>-->
+                    <CartDrop ref="cart" v-show="show"/>
                 </div>
                 <a href="#" class="button header__button ">My Account <i class="fas fa-caret-down"></i></a>
 
@@ -26,6 +27,22 @@
     import CartDrop from "./CartDrop.vue";
     export default {
         name: "Header",
+        data() {
+          return {
+              show: false
+          }
+        },
+        methods: {
+            handleShowClick(event) {
+                event.preventDefault();
+                this.show = !this.show;
+            }
+        },
+        // computed: {
+        //     cartItemsCount() {
+        //         return this.$refs.cart.cartItems.reduce((sum, current) => sum + current.quantity, 0);
+        //     }
+        // },
         components: {
             CartDrop
         }
@@ -115,6 +132,7 @@
 
         &__cart_link
             margin-right: 26px
+            position: relative
 
 
         .logo_img
@@ -132,8 +150,23 @@
         display: flex
         align-items: center
 
-    .header__cart:hover .cart-drop
-        opacity: 1
-        visibility: visible
-        animation: scale-up-tl 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both
+    /*.header__cart:hover .cart-drop*/
+    /*    opacity: 1*/
+    /*    visibility: visible*/
+    /*    animation: scale-up-tl 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both*/
+
+    .count
+        height: 15px
+        width: 15px
+        background-color: $pink
+        position: absolute
+        border-radius: 50%
+        text-align: center
+        line-height: 15px
+        font-size: 12px
+        color: #fff
+        transition: 0.2s
+        top: 40px
+        right: 150px
+
 </style>
