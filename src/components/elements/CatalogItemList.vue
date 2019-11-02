@@ -25,8 +25,7 @@
         },
         data() {
             return {
-                items: [],
-                cartItems:[]
+                items: []
             }
         },
         mounted() {

@@ -536,7 +536,7 @@ input {
 .sidebar__category[open] > summary {
   color: #ef5b70; }
 .sidebar__category[open] > summary::after {
-  font-family: Font Awesome\ 5 Free;
+  font-family: Font Awesome\ 5 Free, sans-serif;
   content: ""; }
 .sidebar__ul {
   list-style-type: none;

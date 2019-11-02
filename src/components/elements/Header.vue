@@ -2,22 +2,30 @@
     <header class="header">
         <div class="container header__content">
             <div class="header__block">
-                <a href="index.html" class="header__logo"><img class="logo_img" src="../../img/logo.png" alt="logo">bran<span
-                        class="d">d</span></a>
+                <router-link to="/" class="header__logo"><img class="logo_img" src="../../img/logo.png"
+                                                              alt="logo">bran<span
+                        class="d">d</span></router-link>
                 <form action="#" class="header__form">
-                    <div class="header__form__browse">Browse<img src="../../img/arrow.png" alt="arrow" class="arrow"></div>
-                    <input type="text" placeholder="Search for Item..." class="header__form__input">
-                    <div class="header__form__search"><img src="../../img/search.png" alt="search" class="search"></div>
+                    <div class="header__form_browse">Browse<img src="../../img/arrow.png" alt="arrow" class="arrow">
+                    </div>
+                    <input type="text" placeholder="Search for Item..." class="header__form_input" v-model="query">
+                    <div @click="handleSearchClick(query)" class="header__form_search">
+                        <img src="../../img/search.png" alt="search" class="search">
+                    </div>
                 </form>
             </div>
             <div class="header__block header__block_right">
                 <div class="header__cart">
-                    <a href="#" class="header__cart_link" @click="handleShowClick"><img src="../../img/cart.svg" alt="cart"></a>
-<!--                    <div class="count">{{ cartItemsCount }} </div>-->
+                    <a href="#" class="header__cart_link" @click="handleShowClick"><img src="../../img/cart.svg"
+                                                                                        alt="cart"></a>
+                    <!--                    <div class="count">{{ cartItemsCount }} </div>-->
                     <CartDrop ref="cart" v-show="show"/>
-                </div>
-                <a href="#" class="button header__button ">My Account <i class="fas fa-caret-down"></i></a>
 
+                </div>
+                <router-link to="/cart" class="button header__button ">
+                    My Account
+                    <i class="fas fa-caret-down"></i>
+                </router-link>
             </div>
         </div>
     </header>
@@ -25,18 +33,24 @@
 
 <script>
     import CartDrop from "./CartDrop.vue";
+
     export default {
         name: "Header",
         data() {
-          return {
-              show: false
-          }
+            return {
+                show: false,
+                query: '',
+            }
         },
         methods: {
             handleShowClick(event) {
                 event.preventDefault();
                 this.show = !this.show;
-            }
+            },
+            handleSearchClick(query) {
+                this.$emit('search', query);
+                this.$router.push('search-page');
+            },
         },
         // computed: {
         //     cartItemsCount() {
@@ -55,6 +69,8 @@
     @import "../../style/variables.sass"
 
     @import "../../style/button-red.css"
+
+    @import "../../style/animations.css"
 
 
     .header
@@ -75,7 +91,7 @@
             margin-left: 37px
             display: flex
 
-        &__form__browse
+        &__form_browse
             height: 38px
             border-radius: 3px 0 0 3px
             border: 1px solid #e6e6e6
@@ -90,7 +106,7 @@
             color: $pink
             font-weight: 400
 
-        &__form__input
+        &__form_input
             width: 280px
             height: 38px
             border: 1px solid #e6e6e6
@@ -102,7 +118,7 @@
             padding-left: 16px
             padding-right: 16px
 
-        &__form__search
+        &__form_search
             width: 38px
             height: 38px
             border-radius: 0 3px 3px 0
@@ -112,6 +128,9 @@
             display: flex
             align-items: center
             justify-content: center
+
+            &:hover
+                cursor: pointer
 
         .arrow
             padding-left: 8px
@@ -140,6 +159,7 @@
 
         &__button
             transition: all 0.2s ease-in
+
             &:hover
                 outline: 1px solid $pink
                 color: $pink
@@ -150,10 +170,6 @@
         display: flex
         align-items: center
 
-    /*.header__cart:hover .cart-drop*/
-    /*    opacity: 1*/
-    /*    visibility: visible*/
-    /*    animation: scale-up-tl 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both*/
 
     .count
         height: 15px

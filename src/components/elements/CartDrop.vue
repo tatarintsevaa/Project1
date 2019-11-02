@@ -1,12 +1,16 @@
 <template>
-    <div class="cart-drop" v-if="cartItems.length">
-        <CartDropItem v-for="item in cartItems" :key="item.id" :product="item" @remove="handleRemoveClick(item.id)"/>
-        <div class="sum">
-            <h2 class="sum__text">TOTAL</h2>
-            <h2 class="sum__text">${{ totalPrice }}</h2>
+    <div>
+        <div class="cart-drop" v-if="cartItems.length">
+            <div class="cart-drop" v-if="!cartItems.length">Cart is empty now</div>
+            <CartDropItem v-for="item in cartItems" :key="item.id" :product="item" @remove="handleRemoveClick(item.id)"/>
+            <div class="sum">
+                <h2 class="sum__text">TOTAL</h2>
+                <h2 class="sum__text">${{ totalPrice }}</h2>
+            </div>
+            <a href="#" class="cart-drop__button">Checkout</a>
+            <router-link to="/cart" class="cart-drop__button">Go to cart</router-link>
         </div>
-        <a href="#" class="cart-drop__button">Checkout</a>
-        <a href="#" class="cart-drop__button">Go to cart</a>
+        <div class="cart-drop empty" v-else>Cart is empty now</div>
     </div>
 </template>
 
@@ -157,5 +161,9 @@
                 font-size: 16px
                 font-weight: 700
                 text-transform: uppercase
+    .empty
+        top: 67px
+        right: 50px
+        padding-top: 10px
 
 </style>

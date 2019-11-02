@@ -17,8 +17,54 @@ body button:hover {
 
 .container {
     margin: 0 auto;
-    width: 1140px; }
+    width: 1140px;
+}
 
 input {
     outline: none;
+}
+
+.heading {
+    height: 148px;
+    background-color: #f8f3f4;
+    margin-bottom: 60px;
+}
+
+
+.heading__h1 {
+    color: #f16d7f;
+    font-size: 24px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.heading__nav {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    list-style-type: none;
+}
+
+.heading__block {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.heading__bread-crumbs {
+    color: #636363;
+    font-size: 14px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.heading__bread-crumbs:hover {
+    color: #f16d7f;
+}
+
+.heading__bread-crumbs_active {
+    color: #f16d7f;
+    font-weight: 700;
 }

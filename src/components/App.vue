@@ -1,11 +1,11 @@
 <template>
     <div>
-        <Header ref="header" />
-        <Navigation />
-        <router-view @add="handleAddClick" />
-        <Subscribe />
+        <Header ref="header" @search="handleSearchClick"/>
+        <Navigation/>
+        <router-view @add="handleAddClick" :query="query"/>
+        <Subscribe/>
         <div class="slr"></div>
-        <Footer />
+        <Footer/>
     </div>
 </template>
 
@@ -23,15 +23,26 @@
             Subscribe,
             Footer
         },
+        data() {
+          return {
+              pageName: null,
+              query: '',
+          }
+        },
         methods: {
             handleAddClick(item) {
                 this.$refs.header.$refs.cart.handleAddClick(item);
+            },
+            pageIs(name) {
+               this.pageName = name;
+            },
+            handleSearchClick(query) {
+                this.query = query;
             }
         },
         mounted() {
             console.log(this);
         }
-
     }
 </script>
 

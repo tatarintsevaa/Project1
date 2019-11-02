@@ -1,7 +1,7 @@
 <template>
     <nav>
         <ul class="menu">
-            <li class="menu__list"><a href="index.html" class="menu__link">Home</a></li>
+            <li class="menu__list"><router-link to="/" href="index.html" class="menu__link">Home</router-link></li>
             <li class="menu__list">
                 <div class="drop drop_mega-menu">
                     <div class="drop__flex">
@@ -48,7 +48,7 @@
                         </a>
                     </div>
                 </div>
-                <a href="product.html" class="menu__link">Man</a></li>
+                <router-link to="/product" class="menu__link">Man</router-link></li>
             <li class="menu__list">
                 <div class="drop drop_mega-menu">
                     <div class="drop__flex">
@@ -95,7 +95,7 @@
                         </a>
                     </div>
                 </div>
-                <a href="#" class="menu__link">Women</a></li>
+                <router-link to="/product" class="menu__link">Women</router-link></li>
             <li class="menu__list">
                 <div class="drop drop_kids drop_mega-menu">
                     <div class="drop__flex">
@@ -142,7 +142,7 @@
                         </a>
                     </div>
                 </div>
-                <a href="#" class="menu__link">Kids</a></li>
+                <router-link to="/product" class="menu__link">Kids</router-link></li>
             <li class="menu__list">
                 <div class="drop drop_accessories drop_mega-menu">
                     <div class="drop__flex">
@@ -189,8 +189,8 @@
                         </a>
                     </div>
                 </div>
-                <a href="#" class="menu__link">Accessories</a></li>
-            <li class="menu__list"><a href="#" class="menu__link">Featured</a></li>
+                <router-link to="/product" class="menu__link">Accessories</router-link></li>
+            <li class="menu__list"><a href="#fetured" class="menu__link">Featured</a></li>
             <li class="menu__list"><a href="#" class="menu__link">Hot Deals</a></li>
         </ul>
     </nav>
