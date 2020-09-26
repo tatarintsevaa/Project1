@@ -1,12 +1,16 @@
 <template>
-    <div class="cart-drop">
-        <CartDropItem v-for="item in cartItems" :key="item.id" :product="item"/>
-        <div class="sum">
-            <h2 class="sum__text">TOTAL</h2>
-            <h2 class="sum__text">$500.00</h2>
+    <div>
+        <div class="cart-drop" v-if="cartItems.length">
+            <div class="cart-drop" v-if="!cartItems.length">Cart is empty now</div>
+            <CartDropItem v-for="item in cartItems" :key="item.id" :product="item" @remove="handleRemoveClick(item.id)"/>
+            <div class="sum">
+                <h2 class="sum__text">TOTAL</h2>
+                <h2 class="sum__text">${{ totalPrice }}</h2>
+            </div>
+            <a href="#" class="cart-drop__button">Checkout</a>
+            <router-link to="/cart" class="cart-drop__button">Go to cart</router-link>
         </div>
-        <a href="#" class="cart-drop__button">Checkout</a>
-        <a href="#" class="cart-drop__button">Go to cart</a>
+        <div class="cart-drop empty" v-else>Cart is empty now</div>
     </div>
 </template>
 
@@ -21,7 +25,69 @@
             }
         },
         methods: {
+            handleAddClick(item) {
+                let find = this.cartItems.find(product => product.id === +item.id);
+                if (find) {
+                    fetch(`http://localhost:3000/cart/${find.id}`, {
+                        method: 'PATCH',
+                        body: JSON.stringify({quantity: ++find.quantity}),
+                        headers: {
+                            'Content-type': 'application/json',
+                        },
+                    })
+                        .catch((error) => console.log(error))
+                } else {
+                    fetch('http://localhost:3000/cart', {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            id: +item.id,
+                            title: item.title,
+                            price: +item.price,
+                            quantity: 1,
+                            image: item.image}),
+                        headers: {
+                            'Content-type': 'application/json',
+                        },
+                    })
+                        .then(() => {
+                            this.cartItems.push({...item, quantity: 1});
+                        })
+                        .catch((error) => console.log(error))
+                }
+            },
+            handleRemoveClick(id) {
+                let find = this.cartItems.find(product => product.id === id);
+                if (find.quantity > 1) {
+                    fetch(`http://localhost:3000/cart/${find.id}`, {
+                        method: 'PATCH',
+                        body: JSON.stringify({quantity: --find.quantity}),
+                        headers: {
+                            'Content-type': 'application/json',
+                        },
+                    })
+                        .catch((error) => console.log(error))
+                } else {
+                    fetch(`http://localhost:3000/cart/${id}`, {
+                        method: 'DELETE',
+                    })
+                        .then(() => {
+                            const index = this.cartItems.findIndex(x => x.id === id);
+                            this.cartItems.splice(index, 1);
+                        })
+                        .catch((error) => console.log(error))
+                }
+            }
 
+
+        },
+        computed: {
+            totalPrice() {
+                return this.cartItems.reduce((sum, current) => sum + current.price * current.quantity, 0);
+            },
+            filteredItems() {
+                const regExp = new RegExp(this.query, 'i');
+                return this.items.filter(product => regExp.test(product.title));
+            },
         },
         mounted() {
             fetch('http://localhost:3000/cart')
@@ -95,5 +161,9 @@
                 font-size: 16px
                 font-weight: 700
                 text-transform: uppercase
+    .empty
+        top: 67px
+        right: 50px
+        padding-top: 10px
 
 </style>

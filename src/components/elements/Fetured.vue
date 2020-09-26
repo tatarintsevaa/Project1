@@ -1,14 +1,14 @@
 <template>
-    <section>
+    <section ><a name="fetured"></a>
         <div class="fetured-items">
             <h3 class="fetured-items__h3">Fetured Items</h3>
-            <p class="fetured-items__p">Shop for items based on what we featured in this week</p>
+            <p class="fetured-items__p" >Shop for items based on what we featured in this week</p>
         </div>
 
-        <CatalogItemList class="container"  :url="'http://localhost:3000/goods'"/>
+        <CatalogItemList class="container"  :url="'http://localhost:3000/goods'" @add="handleAddClick"/>
 
         <div class="product-button-box">
-            <a href="#" class="button button_product">Browse All Product</a>
+            <router-link to="/product" class="button button_product">Browse All Product</router-link>
         </div>
     </section>
 </template>
@@ -20,6 +20,11 @@
         components: {
             CatalogItemList
         },
+        methods: {
+            handleAddClick(item) {
+                this.$emit('add', item);
+            }
+        }
 
     }
 </script>
